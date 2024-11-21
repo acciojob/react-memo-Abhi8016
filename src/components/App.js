@@ -1,11 +1,15 @@
 import React from "react";
-import UseMemo from "./UserMemo";
 import ReactMemo from "./ReactMemo";
+import UseMemo from "./UseMemo";
+
 const App = () => {
   return (
     <div id="main">
-      <h1>React.useMemo</h1>
+      <h2>React.useMemo</h2>
       <UseMemo />
+      <hr />
+      <hr />
+      <h2>React.memo</h2>
       <ReactMemo />
     </div>
   );

@@ -1,27 +1,61 @@
-import React, { useState } from "react";
+import React from "react";
 
 const ReactMemo = () => {
-  const [skills, setSkills] = useState([]);
-  const [skillInput, setSkillInput] = useState("");
+  const [skill, setSkill] = React.useState("");
+  const [skills, setSkills] = React.useState([
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+  ]);
+
+  const [error, setError] = React.useState("");
+
+  const handleChangeInput = (e) => {
+    if (e.target.value.length <= 5) {
+      setError("The length must be greater than 5");
+    } else {
+      setError("");
+    }
+    setSkill(e.target.value);
+  };
+
+  const handleAddSkill = () => {
+    setSkills(skills.concat(skill));
+  };
   return (
-    <div>
-      <h1>React.memo</h1>
-      <input
-        id="skill-input"
-        type="text"
-        onChange={(e) => setSkillInput(e.target.value)}
-        value={skillInput}
-      />
-      <button id="skill-btn" onClick={() => setSkills([...skills, skillInput])}>
+    <>
+      <input id="skill-input" type="text" onChange={handleChangeInput} />
+      {error.length ? <small id="small">{error}</small> : null}
+      <button id="skill-btn" onClick={handleAddSkill}>
         Add Skill
       </button>
-      <ul id="item-jumbotron">
-        {skills.map((skill, index) => (
-          <li key={index}>{skill}</li>
-        ))}
-      </ul>
-    </div>
+      <SkillList skills={skills} />
+    </>
   );
 };
+const SkillList = React.memo(({ skills }) => {
+  console.log("rerendering");
+  return (
+    <ul>
+      {skills.map((skill, i) => (
+        <li id={`item-${skill}`} key={i}>
+          {skill}
+        </li>
+      ))}
+    </ul>
+  );
+});
+
+// const SkillList = ({skills}) => {
+//     console.log("rerendering")
+//     return(
+//         <ul>
+//             {
+//                 skills.map((skill,i)=>(<li key={i}>{skill}</li>))
+//             }
+//         </ul>
+//     )
+// }
 
 export default ReactMemo;
