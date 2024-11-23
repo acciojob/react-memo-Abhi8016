@@ -13,7 +13,7 @@ const ReactMemo = () => {
 
   const handleChangeInput = (e) => {
     if (e.target.value.length <= 5) {
-      setError("The length must be greater tha 5");
+      setError("The length must be greater than 5");
     } else {
       setError("");
     }
