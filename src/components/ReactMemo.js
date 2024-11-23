@@ -25,9 +25,9 @@ const ReactMemo = () => {
   };
   return (
     <>
-      <input id="skill-input" type="text" onChange={handleChangeInput} />
+      <input type="text" onChange={handleChangeInput} />
       {error.length ? <small id="small">{error}</small> : null}
-      <button id="skill-btn" onClick={handleAddSkill}>
+      <button onClick={handleAddSkill}>
         Add Skill
       </button>
       <SkillList skills={skills} />

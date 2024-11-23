@@ -22,7 +22,8 @@ const useMemoComponent = () => {
             {todo}
           </p>
         ))}
-        <button id="add-todo-btn" onClick={addTodo}>
+        {/* <button id="add-todo-btn" onClick={addTodo}> */}
+        <button onClick={addTodo}>
           Add Todo
         </button>
       </div>
